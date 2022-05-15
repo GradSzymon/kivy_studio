@@ -5,11 +5,12 @@ from kivy.utils import get_color_from_hex
 class HoverButton(Button, HoverBehavior):
     '''Custom item implementing hover behavior.'''
 
-    def __init__(self, **kwargs):
+    def __init__(self, bgcolor: str = '#d9d9d4', font_size: str = '18pt',  **kwargs):
        super(HoverButton, self).__init__(**kwargs)
-       self.background_color = get_color_from_hex('#d9d9d4')
+       self.keep_color = bgcolor
+       self.background_color = get_color_from_hex(bgcolor)
        self.markup=True
-       self.font_size='18pt'
+       self.font_size=font_size
 
     def on_enter(self, *args):
         '''The method will be called when the mouse cursor
@@ -21,4 +22,4 @@ class HoverButton(Button, HoverBehavior):
         '''The method will be called when the mouse cursor goes beyond
         the borders of the current widget.'''
 
-        self.background_color = get_color_from_hex('#d9d9d4')
+        self.background_color = get_color_from_hex(self.keep_color)
