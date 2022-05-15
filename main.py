@@ -2,6 +2,8 @@
 import kivy
 from kivy.app import App
 from kivy_studio.uix.layouts.root import RootLayout
+from kivy.config import Config
+from kivy.core.window import Window
 
 import logging
 
@@ -14,6 +16,8 @@ class KivyStudioApp(App):
 
 def run_studio() -> None:
     kivy.require(kivy_version)
+    Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
+    Window.clearcolor = (1, 1, 1, 1)
     kivy_studio = KivyStudioApp()
     kivy_studio.run()
 
